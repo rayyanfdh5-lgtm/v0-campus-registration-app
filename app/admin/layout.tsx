@@ -3,6 +3,7 @@
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { AuthProvider, useAuth } from "@/contexts/auth-context"
+import { CampusProvider } from "@/contexts/campus-context"
 import { AdminSidebar } from "@/components/admin/sidebar"
 import { Spinner } from "@/components/ui/spinner"
 
@@ -52,7 +53,9 @@ export default function AdminLayout({
 }) {
   return (
     <AuthProvider>
-      <AdminContent>{children}</AdminContent>
+      <CampusProvider>
+        <AdminContent>{children}</AdminContent>
+      </CampusProvider>
     </AuthProvider>
   )
 }

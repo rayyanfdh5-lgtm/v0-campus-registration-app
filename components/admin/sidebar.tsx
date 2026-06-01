@@ -2,14 +2,20 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { BarChart3, Users, Settings, FileText, Bell, BarChart4 } from "lucide-react"
+import { BarChart3, Users, Settings, FileText, Bell, BarChart4, CheckCircle2, Crown } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { CampusSwitcher } from "@/components/campus-switcher"
 
 const ADMIN_MENU = [
   {
     label: "Dashboard",
     href: "/admin",
     icon: BarChart3,
+  },
+  {
+    label: "Executive",
+    href: "/admin/executive",
+    icon: Crown,
   },
   {
     label: "PMB Management",
@@ -25,6 +31,11 @@ const ADMIN_MENU = [
     label: "Exam Management",
     href: "/admin/exam",
     icon: BarChart4,
+  },
+  {
+    label: "Check-in",
+    href: "/admin/check-in",
+    icon: CheckCircle2,
   },
   {
     label: "Announcements",
@@ -53,12 +64,16 @@ export function AdminSidebar() {
 
       {/* Desktop Sidebar */}
       <aside className="fixed left-0 top-0 hidden h-screen w-72 border-r border-border/40 bg-background p-6 lg:block">
-        <div className="mb-8 flex items-center gap-2">
+        <div className="mb-6 flex items-center gap-2">
           <BarChart3 className="h-8 w-8 text-primary" />
           <div>
             <div className="font-bold">PMB Admin</div>
             <div className="text-xs text-muted-foreground">Campus Registration</div>
           </div>
+        </div>
+
+        <div className="mb-6 pb-6 border-b">
+          <CampusSwitcher />
         </div>
 
         <nav className="space-y-2">
